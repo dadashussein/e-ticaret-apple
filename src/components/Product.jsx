@@ -27,7 +27,7 @@ const Product = ({ product }) => {
 
   return (
   
-<div className="w-full max-w-[18rem] md:max-w-[20rem] bg-white
+<div className="w-full max-w-[17rem] md:max-w-[20rem] bg-white
  border border-gray-200 rounded-lg shadow
   dark:bg-gray-800  dark:border-gray-700 ">
     <Toaster />
