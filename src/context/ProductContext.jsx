@@ -1,17 +1,20 @@
 import { createContext, useState, useEffect, useContext } from "react";
+import Pulse from "../components/animation/Pulse";
 const ProductsContext = createContext();
 
 export const useProducts = () => {
   return useContext(ProductsContext);
 };
 
+const SERVER = import.meta.env.VITE_SERVER;
+
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch("https://real-plum-seal-shoe.cyclic.app/products");
+      const response = await fetch(SERVER);
       const data = await response.json();
       setProducts(data);
       setLoading(false);
@@ -19,12 +22,16 @@ export const ProductsProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
-  if(loading){
-    return <>Loading</>
+  if (isLoading) {
+    return (
+      <>
+        <Pulse />
+      </>
+    );
   }
 
   return (
-    <ProductsContext.Provider value={{ products, loading }}>
+    <ProductsContext.Provider value={{ products, isLoading }}>
       {children}
     </ProductsContext.Provider>
   );

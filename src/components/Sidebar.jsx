@@ -1,9 +1,10 @@
+//import icon
 import { IoMdArrowForward } from "react-icons/io";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
-
 import { FiTrash2 } from "react-icons/fi";
+
 import { useSidebar } from "../context/SidebarContext";
-import { useContext, useEffect} from "react";
+import { useContext } from "react";
 import { CartContext } from "../context/CartContex";
 import CardItem from "./CardItem";
 import { Link } from "react-router-dom";
@@ -13,15 +14,19 @@ const Sidebar = () => {
   const { isOpen, handleClose } = useSidebar();
   const { cart, total, clearCart, itemAmount } = useContext(CartContext);
 
-
   return (
     <div
       className={` ${
         isOpen ? "right-0" : "-right-full"
-      }  w-full text-black h-full top-0 backdrop-blur-2xl bg-white/70  fixed shadow-2xl md:w-[35vw] xl:max-w-[30vw]  transition-all  duration-300 z-20 px-4 lg:px-[35px]`}
+      }  w-full dark:text-gray-400 text-gray-700 h-full   top-0 backdrop-blur-2xl 
+      bg-white/50 dark:bg-[#1f2937e0]  fixed shadow-2xl md:w-[35vw] xl:max-w-[30vw]
+        transition-all  duration-300 z-20 px-4 lg:px-[35px]`}
     >
       {/* shoping bag */}
-      <div className="flex items-center justify-between rounded-md p-2 mt-4  border border-black">
+      <div
+        className="flex items-center justify-between rounded-md p-2 mt-4  
+      border border-black dark:border-gray-500"
+      >
         <div className="uppercase text-sm font-semibold">
           Səbət {itemAmount}
         </div>
@@ -38,10 +43,10 @@ const Sidebar = () => {
       {cart.length > 0 ? (
         <div
           className="flex flex-col gap-y-2 h-[320px] lg:h-[350px]
-          overflow-y-auto  overflow-x-hidden border-b"
+          overflow-y-auto   overflow-x-hidden border-b"
         >
           {cart.map((item) => {
-            return <CardItem  item={item} key={item._id} />;
+            return <CardItem item={item} key={item._id} />;
           })}
         </div>
       ) : (
@@ -53,7 +58,7 @@ const Sidebar = () => {
         </div>
       )}
 
-      <div className="flex flex-col gap-y-3 py-4 mt-4 ">
+      <div className="flex flex-col gap-y-3 py-4 mt-4 text-gray-700  dark:text-gray-300   ">
         <div className=" flex w-full justify-between items-center">
           {/* total */}
           <div className=" flex flex-col font-semibold">
@@ -69,20 +74,23 @@ const Sidebar = () => {
           {/* clear cart icon */}
           <div
             onClick={clearCart}
-            className="cursor-pointer rounded-md py-2 bg-red-700   text-white w-10 h-19 flex justify-center items-center text-xl"
+            className="cursor-pointer rounded-md py-2 bg-red-700 
+              text-white w-10 h-19 flex justify-center items-center text-xl"
           >
             <FiTrash2 />
           </div>
         </div>
         <Link
           to={`/`}
-          className=" border-black border rounded flex p-1 justify-center items-center text-primary  w-full  font-medium"
+          className=" border-black dark:border-gray-500   border rounded flex p-1 
+          justify-center items-center text-primary  w-full  font-medium"
         >
           Səbətə Bax{" "}
         </Link>
         <Link
           to={`/`}
-          className=" border border-black text-black  rounded flex p-1 justify-center items-center w-full  font-medium"
+          className="border border-black dark:border-gray-500  rounded 
+          flex p-1 justify-center items-center w-full  font-medium"
         >
           Ödənişə keç
         </Link>

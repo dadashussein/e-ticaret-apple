@@ -25,8 +25,8 @@ export default function ProductImages({ images }) {
             images.map((img) => (
               <div
                 onClick={() => handleBig(img)}
-                className={`border-gray-300 ${
-                  bigImage === img ? "border-black" : "opacity-70"
+                className={`border-gray-200 ${
+                  bigImage === img ? "border-gray-800" : "opacity-70"
                 } border`}
                 key={img}
               >

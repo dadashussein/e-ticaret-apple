@@ -3,47 +3,27 @@
 @tailwind components;
 @tailwind utilities;
 
+
+html.dark {
+    background-color: #1F2937;
+}
+html {
+    background-color: #eee;
+  }
+
+
+
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    background: #EEEEEE;
+
 }
 
 
 @layer base {
     ul {
         list-style-type: none;
-    }
-
-    .cardMd {
-        @apply bg-white text-gray-700 shadow-lg rounded-md overflow-hidden
-         md:w-[18rem] md:min-h-[10rem] md:py-2 md:flex-col
-         w-[16rem] flex  py-1
-    }
-
- 
-    .badge {
-        @apply px-4 py-1 rounded text-[7px] md:text-xs bg-gray-100
-    }
-
-    .product-title {
-        @apply font-semibold text-[15px] md:text-2xl overflow-ellipsis overflow-hidden whitespace-nowrap
-    }
-
-    .discount-percent {
-        @apply bg-green-400 px-1.5 py-0.5 rounded-md text-[8px] md:text-xs text-white
-    }
-
-    .button-primary {
-        @apply bg-yellow-500/80 hover:bg-yellow-500/90 px-3 md:px-6 py-1 rounded-md text-white font-medium text-[12px] mb-2 md:text-lg h-6 md:h-8   transition
-    }
-
-    .button-icon {
-        @apply flex-grow flex justify-center items-center bg-gray-300/60 hover:bg-gray-300/80 transition rounded-md
-    }
-    .primary{
-        @apply red
     }
 }

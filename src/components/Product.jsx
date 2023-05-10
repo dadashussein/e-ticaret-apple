@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import Rating from "./Rating";
 import { CartContext } from "../context/CartContex";
-import { FiEye } from "react-icons/fi";
-import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 import toast, { Toaster } from "react-hot-toast";
@@ -28,62 +26,43 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div className="justify-center  flex flex-wrap gap-4 ">
-      <Toaster />
-      <div className="cardMd">
-        {/* product image */}
-        <div className="md:border-b  border-r flex py-1 items-center justify-center ">
-          <img
-            src={images[0]}
-            alt=""
-            className=" md:w-[14rem] max-w-[5rem]  md:max-w-[13rem]  flex object-cover"
-          />
+  
+<div className="w-full max-w-[18rem] md:max-w-[20rem] bg-white
+ border border-gray-200 rounded-lg shadow
+  dark:bg-gray-800  dark:border-gray-700 ">
+    <Toaster />
+    <Link to={`/product/${_id}`} className="flex justify-center ">
+        <img className=" flex md:p-2  rounded-t-lg h-[13rem]  md:h-[15rem] " src={images[0]} alt="product image" />
+    </Link>
+    <div className="px-5 pb-5">
+        <Link to={`/product/${_id}`}>
+            <h5 className="text-xl font-semibold tracking-tight 
+            text-gray-900 hover:underline  dark:text-white">{title}</h5>
+        </Link>
+        <div className="flex items-center mt-2.5 mb-5">
+          <Rating />
+            <span className="bg-blue-100 text-blue-800 text-xs font-semibold 
+            mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+            
         </div>
-        <div className="p-1 sm:p-3 md:p-5 flex flex-col gap-1 sm:gap-2 md:gap-3">
-          {/* badge */}
-
-          <div className="flex items-center gap-1 md:gap-2">
-            <span className="badge">anbarda</span>
-            <span className="badge">rəsmi magaza</span>
-          </div>
-
-          {/* product title */}
-
-          <h2 className="product-title  border-b">{title}</h2>
-
-          {/* product price */}
-          <div>
-            <span className="text-sm sm:text-lg md:text-xl font-bold ">
-              {discount(price)} AZN
-            </span>
-            <div className="flex items-center gap-2 mt-1">
-              <span className="text-sm line-through text-red-600 opacity-50">
-                {price} AZN
-              </span>
-              <span className="discount-percent">endirim 10%</span>
-            </div>
-          </div>
-          {/* product rating */}
-          <div>
-            <Rating />
-          </div>
-
-          {/* product action button */}
-
-          <div className=" mt-1 sm:mt-3 md:mt-5 flex gap-2">
-            <button onClick={handleAddToCart} className="button-primary">
-              Səbətə at
-            </button>
-            <button className="button-icon h-6 md:h-8 ">
-              <AiOutlineHeart />
-            </button>
-            <Link to={`/product/${_id}`} className="button-icon h-6 md:h-8 ">
-              <FiEye />
-            </Link>
-          </div>
+        <div className="flex items-center justify-between">
+         <div className="flex flex-col  items-center ">
+          <span className="bg-green-500 text-white py-1 px-2 flex  text-[10px] rounded-full my-1 font-bold">10 % endirim</span>
+          <span className="text-sm line-through text-red-600 ">
+            {price} AZN
+           </span>      
+              <span className="text-sm sm:text-lg md:text-xl dark:text-white font-bold ">
+           {discount(price)} AZN
+               </span>
+         </div>
+            <button  onClick={handleAddToCart}className="text-white bg-blue-700 hover:bg-blue-800 
+            focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium
+             rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600
+              dark:hover:bg-blue-700 dark:focus:ring-blue-800">Səbətə at</button>
         </div>
-      </div>
     </div>
+</div>
+
   );
 };
 

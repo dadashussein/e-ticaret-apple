@@ -1,11 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSidebar } from "../context/SidebarContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContex";
-import { AiOutlineUser } from "react-icons/ai";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FaUser } from "react-icons/fa";
+import { RiShoppingCart2Fill } from "react-icons/ri";
 import { AiOutlineSearch } from "react-icons/ai";
-import Logo from "../../public/images/logo2.png";
 import DarkMode from "./DarkMode";
 
 const Header = () => {
@@ -25,16 +24,14 @@ const Header = () => {
   return (
     <header
       className="flex shadow-inner justify-between md:justify-around
-     items-center  text-black dark:text-[#aaa] backdrop-blur bg-[#eee] dark:bg-[#3b3a3a] w-full
-       sticky py-1 px-2 md:px-4 "
+     items-center  text-black dark:text-[#D1D5DB] backdrop-blur bg-[#eee] 
+     dark:bg-[#1F2937] w-full
+       sticky px-2 md:px-4 h-[3.4rem] "
     >
       {/* Logo */}
       <div>
         <Link to="/" className="flex items-center">
-          <img src={Logo} className=" w-16  sm:h-16" alt="apple logo" />
-          <span className="self-center  font-semibold hidden md:block ">
-            Apple Az
-          </span>
+          <span className="text-gray-600 font-semibold  ">Apple Az</span>
         </Link>
       </div>
 
@@ -56,15 +53,15 @@ const Header = () => {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-[6rem] h-[2rem] md:h-[2.5rem] p-1 sm:w-[7rem] shadow-inner-md
-             bg-transparent s md:w-[12rem]  border rounded-lg placeholder:text-[14px]"
+            className="w-[6rem] h-[2rem] md:h-[2rem] text-[13px] p-1 sm:w-[7rem] shadow-inner-md
+             bg-transparent s md:w-[12rem]  border rounded-lg placeholder:text-[12px]"
             type="text"
             placeholder="Axtar..."
           />
           <button
             type="submit"
-            className="absolute text-[#222] dark:text-[#aaa] top-2 right-0
-             md:right-1 md:top-2 md:border-l border-black text-[20px] md:text-[30px]"
+            className="absolute text-[#222] dark:text-[#aaa] top-1.5 right-0
+             md:right-1 px-1 md:top-1.5 md:border-l text-[20px] md:text-[20px]"
           >
             <AiOutlineSearch />
           </button>
@@ -74,11 +71,11 @@ const Header = () => {
       {/* Login && mobilemenu */}
 
       <div className="flex gap-2">
-        <div className="flex md:gap-4 items-center">
-          <div className="flex items-center gap-1">
-            <span className="text-[25px] md:text-[30px]">
+        <div className="flex md:gap-4 gap-2 items-center text-gray-500 dark:text-gray-400">
+          <div className="flex items-center gap-1  ">
+            <span className="text-[20px] md:text-[20px]">
               {" "}
-              <AiOutlineUser />
+              <FaUser />
             </span>
             <span className="hidden md:block"> Daxil ol</span>
           </div>
@@ -88,13 +85,14 @@ const Header = () => {
           >
             <span
               className="absolute  text-white rounded-full 
-             bg-red-500 text-[12px] md:text-[15px]   flex items-center justify-center  w-[.8rem] h-[.8rem] md:w-[1rem] md:h-[1rem]
+             bg-red-500 text-[12px] md:text-[12px]   flex items-center justify-center
+               w-[.8rem] h-[.8rem] md:w-[1rem] md:h-[1rem]
               top-0  right-0 md:left-4"
             >
               {itemAmount}
             </span>
-            <span className=" text-[25px] md:text-[30px]">
-              <AiOutlineShoppingCart />{" "}
+            <span className=" text-[23px] md:mx-1 md:text-[24px]">
+              <RiShoppingCart2Fill />{" "}
             </span>{" "}
             <span className="hidden md:block"> Səbət</span>
           </div>

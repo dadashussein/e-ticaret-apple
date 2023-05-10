@@ -17,7 +17,9 @@ const DarkMode = () => {
           type="button"
           aria-label="Use Dark Mode"
           onClick={() => setTheme("dark")}
-          className="active:scale-95 transition-transform flex w-9 h-9 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link"
+          className="active:scale-95 transition-transform 
+          flex w-7 h-7 rounded-full items-center justify-center text-gray-600
+            "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +29,7 @@ const DarkMode = () => {
           >
             <g fill="none" fillRule="evenodd" transform="translate(-440 -200)">
               <path
-                fill="currentColor"
+                fill="gray"
                 fillRule="nonzero"
                 stroke="currentColor"
                 strokeWidth="0.5"
@@ -44,7 +46,9 @@ const DarkMode = () => {
           type="button"
           onClick={() => setTheme("light")}
           aria-label="Use Light Mode"
-          className="active:scale-95 transition-transform flex w-9 h-9 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link"
+          className="active:scale-95 transition-transform 
+          flex w-7 h-7 rounded-full items-center justify-center text-yellow-600
+            "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,18 +1,29 @@
 import { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContext";
 import { Link, useParams } from "react-router-dom";
+import Pulse from "../components/animation/Pulse";
 
 const AllProduct = () => {
-  const { products } = useProducts();
+  const { products, isLoading } = useProducts();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const { query } = useParams();
 
   useEffect(() => {
-    const filtered = products.filter((product) =>
-      product.title.toLowerCase().includes(query.toLowerCase())
+    if (!isLoading) {
+      const filtered = products.filter((product) =>
+        product.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    }
+  }, [query, isLoading, products]);
+
+  if (isLoading) {
+    return (
+      <div>
+        <Pulse />
+      </div>
     );
-    setFilteredProducts(filtered);
-  }, [query, products]);
+  }
 
   return (
     <div className="p-4 h-[60vh]">
@@ -22,7 +33,10 @@ const AllProduct = () => {
             <p>Məhsul tapılmadı</p>
           ) : (
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#222] dark:text-gray-400">
+              <thead
+                className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#1F2937]
+               dark:text-gray-400"
+              >
                 <tr>
                   <th scope="col" className="px-6 py-3">
                     Məhsul adı
@@ -41,7 +55,7 @@ const AllProduct = () => {
 
               {filteredProducts.map((product) => (
                 <tbody key={product._id}>
-                  <tr className="bg-white border-b dark:bg-[#333] dark:border-gray-900">
+                  <tr className="bg-white border-b dark:bg-[#374151] dark:border-gray-900">
                     <th
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"

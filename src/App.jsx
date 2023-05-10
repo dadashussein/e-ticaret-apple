@@ -6,9 +6,10 @@ import ProductDetail from "./pages/ProductDetail";
 import Footer from "./components/Footer";
 import AllProduct from "./pages/AllProduct";
 
+
 function App() {
   return (
-    <>
+    <div className="bg-[#eee] dark:bg-[#111827]">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -16,8 +17,9 @@ function App() {
         <Route path="/allproduct/:query" element={<AllProduct />} />
       </Routes>
       <Sidebar />
+      
       <Footer />
-    </>
+    </div>
   );
 }
 

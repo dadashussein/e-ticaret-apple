@@ -2,15 +2,10 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-[#3b3a3a] shadow ">
+    <footer className="bg-white  dark:bg-[#1F2937] shadow ">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link to="/" className="flex items-center mb-4 sm:mb-0">
-            <img
-              src="images/logo.png"
-              className="h-16 w-16 mr-3"
-              alt="apple logo"
-            />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Apple Az
             </span>

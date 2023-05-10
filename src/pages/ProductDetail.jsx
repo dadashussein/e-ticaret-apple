@@ -2,29 +2,40 @@ import { useParams } from "react-router-dom";
 import { useProducts } from "../context/ProductContext";
 import { useEffect, useState } from "react";
 import ProductImages from "../components/ProductImages";
-
+import Pulse from "../components/animation/Pulse";
 
 const ProductDetail = () => {
-  const { products } = useProducts();
+  const { products, isLoading } = useProducts();
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  console.log(product?.properties);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const newProduct = products.find((item) => item._id === id);
-    setProduct(newProduct || {});
-  }, [id, products]);
+    if (!isLoading) {
+      const newProduct = products.find((item) => item._id === id);
+      setProduct(newProduct || {});
+    }
+  }, [id, isLoading, products]);
+
+  if (isLoading) {
+    return (
+      <div>
+        <Pulse />
+      </div>
+    );
+  }
 
   return (
-    <div className="flex  items-center   flex-col lg:flex-row">
+    <div className="flex  items-center  bg-gray-300 dark:bg-[#324968]  flex-col lg:flex-row">
       <div className="lg:w-[50%]  my-2 mx-6  flex items-center justify-center ">
         <ProductImages images={product.images && product.images} />
       </div>
 
-      <div className="flex flex-col lg:w-[50%] my-4 p-4 mx-6">
-        <div className="border-b border-gray-200 pb-6">
-          <p className="text-sm leading-none text-gray-600">Apple Macbook</p>
+      <div className="flex flex-col lg:w-[50%] my-4 p-4 mx-6 text-gray-700 dark:text-gray-300 ">
+        <div className="border-b border-gray-800 dark:border-gray-200 pb-6 ">
+          <p className="text-sm leading-none bg-green-500 inline rounded-lg my-2 p-1 dark:text-gray-300">
+            Anbarda mövcuddur
+          </p>
           <h1
             className="
           lg:text-2xl
@@ -32,48 +43,52 @@ const ProductDetail = () => {
           font-semibold
           lg:leading-6
           leading-7
-          text-gray-800
+        
           mt-2
         "
           >
             {product.title}
           </h1>
         </div>
-        <div className="py-4 border-b border-gray-200 flex items-center justify-between">
-          <p className="text-base leading-4 text-gray-800">Rəng</p>
+        <div className="py-4 border-b border-gray-800 dark:border-gray-200 flex items-center justify-between">
+          <p className="text-base leading-4 text-gray-800 dark:text-gray-400">
+            Rəng
+          </p>
           <div className="flex items-center justify-center">
-            <p className="text-sm leading-none text-gray-600">
+            <p className="text-sm leading-none ">
               {product?.properties?.colour}
             </p>
           </div>
         </div>
-        <div className="py-4 border-b border-gray-200 flex items-center justify-between">
-          <p className="text-base leading-4 text-gray-800">Yaddaş</p>
+        <div className="py-4 border-b border-gray-800 dark:border-gray-200 flex items-center justify-between">
+          <p className="text-base leading-4 text-gray-800 dark:text-gray-400">
+            Yaddaş
+          </p>
           <div className="flex items-center justify-center">
-            <p className="text-sm leading-none text-gray-600 mr-3">
+            <p className="text-sm leading-none mr-3">
               {product?.properties?.size} GB
             </p>
           </div>
         </div>
 
         <div>
-          <p className="xl:pr-48 text-base lg:leading-tight leading-normal text-gray-600 mt-7">
+          <p className="xl:pr-48 text-base lg:leading-tight leading-normal mt-7">
             {product.description}
           </p>
-          <p className="text-base leading-4 mt-7 text-gray-600">
+          <p className="text-base leading-4 mt-7 ">
             Məhsul kodu: 8BN321AF2IF0NYA
           </p>
-          <p className="md:w-96 text-base leading-normal text-gray-600 mt-4">
+          <p className="md:w-96 text-base leading-normal  mt-4">
             Son model Amerikadan idxal
           </p>
         </div>
         <div>
-          <div className="border-t border-b py-4 mt-7 border-gray-200">
+          <div className="border-t border-b py-4 mt-7 border-gray-800 dark:border-gray-200">
             <div
               onClick={() => setShow(!show)}
               className="flex justify-between items-center cursor-pointer"
             >
-              <p className="text-base leading-4 text-gray-800">
+              <p className="text-base leading-4 text-gray-800 dark:text-gray-400">
                 Çatdırılma və qaytarma
               </p>
               <button
@@ -104,7 +119,7 @@ const ProductDetail = () => {
             </div>
             <div
               className={
-                "pt-4 text-base leading-normal pr-12 mt-4 text-gray-600 " +
+                "pt-4 text-base leading-normal pr-12 mt-4" +
                 (show ? "block" : "hidden")
               }
               id="sect"
