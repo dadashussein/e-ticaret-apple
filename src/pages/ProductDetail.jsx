@@ -122,7 +122,6 @@ const ProductDetail = () => {
                 "pt-4 text-base leading-normal pr-12 mt-4" +
                 (show ? "block" : "hidden")
               }
-              id="sect"
             >
               Məhsulunuzu geri qaytarmaq üçün öz göndərmə xərclərinizi ödəməyə
               cavabdeh olacaqsınız. Göndərmə xərcləri geri qaytarılmır
