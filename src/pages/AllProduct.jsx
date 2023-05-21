@@ -28,7 +28,7 @@ const AllProduct = () => {
   return (
     <div className="p-4 h-[60vh]">
       <div>
-        <div className="relative overflow-x-auto">
+        <div className="relative text-gray-800 dark:text-white  overflow-x-auto">
           {filteredProducts.length === 0 ? (
             <p>Məhsul tapılmadı</p>
           ) : (

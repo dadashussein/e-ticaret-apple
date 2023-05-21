@@ -11,7 +11,7 @@ const NewFeatured = () => {
   };
   return (
     <div
-      className="bg-[#cccbcb] dark:bg-[#24354c]
+      className="bg-[#cccbcb] dark:bg-[#24354c] md:ml-40
       flex py-5 px-10 md:px-20 lg:px-40 gap-8 flex-col md:flex-row
       justify-center items-center
      "
